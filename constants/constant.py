@@ -1,0 +1,2 @@
+CAP_TIME = 3600 * 3
+CAP_LIMIT = 25

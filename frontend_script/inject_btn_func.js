@@ -60,4 +60,15 @@ function inject_btn_func() {
   console.log('add listener success')
 }
 
+function inject_enter_func() {
+  var textarea = document.querySelector('#prompt-textarea');
+  textarea.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {
+      report_new_submit();
+    }
+  });
+}
+
+
 inject_btn_func();
+inject_enter_func()

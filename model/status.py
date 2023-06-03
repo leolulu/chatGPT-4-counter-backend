@@ -9,7 +9,6 @@ from utils.time_util import seconds_to_hour_minute_second
 
 class ChatGPTStatus:
     def __init__(self) -> None:
-        # self.countdowning = False
         self.requests: List[ChatGPTRequest] = []
 
     def receive_new_request(self):

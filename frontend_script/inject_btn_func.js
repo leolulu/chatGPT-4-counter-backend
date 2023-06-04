@@ -5,10 +5,10 @@ function popup_info(info_content) {
 
   // 设置 div 元素的样式
   div.style.position = "fixed";
-  div.style.bottom = "20px";
+  div.style.top = "0px";
   div.style.right = "20px";
   div.style.padding = "10px";
-  div.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  div.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
   div.style.color = "#fff";
   div.style.zIndex = "9999";
   div.style.opacity = "0"; // 初始时设置透明度为0
@@ -25,12 +25,12 @@ function popup_info(info_content) {
   // 通过 setTimeout 函数在六秒钟后触发渐变消失效果
   setTimeout(function () {
     div.style.opacity = "0"; // 将透明度设置为0，触发渐变消失
-  }, 11000);
+  }, 21000);
 
   // 七秒钟后移除 div 元素
   setTimeout(function () {
     document.body.removeChild(div);
-  }, 12000);
+  }, 22000);
 
 }
 
@@ -58,7 +58,7 @@ function report_new_submit() {
 function inject_btn_func() {
   var button = document.querySelector('button.absolute');
   button.addEventListener('click', report_new_submit);
-  console.log('add listener success')
+  console.log('add click listener success')
 }
 
 function inject_enter_func() {
@@ -68,8 +68,8 @@ function inject_enter_func() {
       report_new_submit();
     }
   });
+  console.log('add enter listener success')
 }
 
-
 inject_btn_func();
-inject_enter_func()
+inject_enter_func();

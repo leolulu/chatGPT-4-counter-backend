@@ -35,6 +35,7 @@ function popup_info(info_content) {
 }
 
 function report_new_submit() {
+  console.log("事件已捕获，开始发送请求...")
   fetch('https://chatgpt-4-counter-backend-production.up.railway.app//usage_audit', {
     method: 'POST',
     headers: {

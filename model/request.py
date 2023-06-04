@@ -1,6 +1,7 @@
-from datetime import datetime
 import time
-from zoneinfo import ZoneInfo
+from datetime import datetime
+
+import arrow
 
 from constants.constant import CAP_TIME
 
@@ -12,19 +13,13 @@ class ChatGPTRequest:
         self.trigger_time_epoch = time.time()
         self.time_convert()
 
-    def _get_human_time(self, time_struct):
-        hour = time.strftime("%H", time_struct)
-        minute = time.strftime("%M", time_struct)
-        return f"{int(hour)}点{int(minute)}分"
-
     def time_convert(self):
-        tz_east_8 = ZoneInfo("Asia/Shanghai")  # 东八区
-        trigger_time_local = datetime.fromtimestamp(self.trigger_time_epoch)
-        self.trigger_time_full = trigger_time_local.astimezone(tz_east_8).strftime("%Y-%m-%d %H:%M:%S")
-        self.trigger_time_human = self._get_human_time(trigger_time_local.astimezone(tz_east_8))
+        trigger_time_local = arrow.get(self.trigger_time_epoch).to('Asia/Shanghai')
+        self.trigger_time_full = trigger_time_local.format('YYYY-MM-DD HH:mm:ss')
+        self.trigger_time_human = trigger_time_local.format('h点m分')
         self.ert_epoch = self.trigger_time_epoch + CAP_TIME
-        ert_time_local = datetime.fromtimestamp(self.ert_epoch)
-        self.ert_time_human = self._get_human_time(ert_time_local.astimezone(tz_east_8))
+        ert_time_local =  arrow.get(self.ert_epoch).to('Asia/Shanghai') 
+        self.ert_time_human = ert_time_local.format('h点m分')
 
 
 if __name__ == "__main__":

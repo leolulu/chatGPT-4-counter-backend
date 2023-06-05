@@ -71,7 +71,20 @@ function inject_enter_func() {
   console.log('add enter listener success')
 }
 
+function inject_style_adjustment(){
+    console.log("开始调整格式");
+    const nodeList = document.querySelectorAll('div.group');
+    for (let i = 1; i < nodeList.length; i++) {
+      const element = nodeList[i];
+      const first_div = element.firstElementChild;
+      first_div.style.transition = "1s";
+      first_div.style.maxWidth = '480rem';
+    }
+    document.querySelector("div.rounded-lg:nth-child(2)").style.maxHeight= "40rem";
+}
+
 setInterval(() => {
   inject_btn_func();
   inject_enter_func();
+  inject_style_adjustment();
 }, 2000);

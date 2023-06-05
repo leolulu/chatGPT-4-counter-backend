@@ -71,5 +71,7 @@ function inject_enter_func() {
   console.log('add enter listener success')
 }
 
-inject_btn_func();
-inject_enter_func();
+setInterval(() => {
+  inject_btn_func();
+  inject_enter_func();
+}, 2000);
